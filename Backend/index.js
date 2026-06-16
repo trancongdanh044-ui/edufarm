@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 //Route
 const authRoute = require("./routes/auth.route");
 const postRoute = require("./routes/common/post.route");
+const imgPageRoute = require("./routes/admin/images_page.route");
 
 //Middleware
 app.use(cors());
@@ -22,11 +23,13 @@ app.get("/", (req, res) => {
 });
 
 //API
-console.log(authRoute);
-console.log(postRoute);
-
+//Commom
 app.use('/api/auth', authRoute);
 app.use('/api/post', postRoute);
+
+//Admin
+app.use('/api/imagespage', imgPageRoute);
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

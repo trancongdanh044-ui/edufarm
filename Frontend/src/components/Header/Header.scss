@@ -1,13 +1,25 @@
 .header {
   height: 80px;
   background: #ffffff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  // làm header nổi
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+
+  // fix cứng trên đầu trang
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 9999;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   padding: 0 50px;
+
+  box-sizing: border-box;
 
   &__logo {
     img {
@@ -51,6 +63,7 @@
         &.active::after {
           content: "";
           position: absolute;
+
           left: 0;
           bottom: -6px;
 
