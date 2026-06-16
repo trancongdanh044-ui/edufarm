@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 //Route
 const authRoute = require("./routes/auth.route");
+const postRoute = require("./routes/common/post.route");
 
 //Middleware
 app.use(cors());
@@ -20,7 +21,12 @@ app.get("/", (req, res) => {
     })
 });
 
-app.use('/api', authRoute);
+//API
+console.log(authRoute);
+console.log(postRoute);
+
+app.use('/api/auth', authRoute);
+app.use('/api/post', postRoute);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
