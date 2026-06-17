@@ -1,13 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
+import { useState } from "react";
+import { useEffect } from "react";
+import { fetchAPI } from "../../api/post";
 
 function Header() {
+	const [logo, setLogo] = useState({});
+	useEffect(() =>{
+		const loadData = async () =>{
+			const data = await fetchAPI("/imagespage/admin/1");
+			setLogo(data);
+		}
+		loadData();
+	}, [])
+
 	return (
 		<>
 			<header className="header">
 				<div className="header__logo">
 					<Link to='/'>
-						<img src="" alt="" />
+						<img src={logo.image_url} alt="logo" />
 					</Link>
 				</div>
 				<ul className="header__inner">

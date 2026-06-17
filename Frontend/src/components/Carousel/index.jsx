@@ -11,7 +11,7 @@ function Carousel() {
 	useEffect(() => {
 		const loadData = async () => {
 			try {
-				const data = await fetchAPI("/imagespage/admin?limit=3");
+				const data = await fetchAPI("/imagespage/admin?type=carousel&limit=3");
 				setImages(data);
 			} catch (error) {
 				console.log(error);

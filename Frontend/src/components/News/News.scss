@@ -14,7 +14,18 @@
 
 		margin-bottom: 40px;
 
+		&::after {
+            content: "";
+            width: 80px;
+            height: 4px;
+            background: #4caf50;
+            border-radius: 999px;
+            display: block;
+            margin: 15px auto 0;
+        }
+
 	}
+	
 
 
 	&__list {
