@@ -1,9 +1,13 @@
 const imgPageModel = require('../../models/imagesPage.model');
 
-exports.getAllImagePage = async (req, res, next) =>{
+exports.getImagePage = async (req, res, next) =>{
     try {
-        const {limit} = req.query;
-        const imgPageList = await imgPageModel.getAllImagesPage(Number(limit));
+        
+        const type = req.query.type || null;
+
+        const limit = req.query.limit ? Number(req.query.limit) : null
+
+        const imgPageList = await imgPageModel.getImagePage(type, limit);
 
         if(imgPageList.length === 0){
             return res.status(400).json({
@@ -25,6 +29,7 @@ exports.getImagePageById = async (req, res, next) =>{
         if(imgId === null || imgId === ""){
             return res.status(404).json({
                 message: "Không tìm thấy ảnh !",
+
             });
         }
 
@@ -36,8 +41,8 @@ exports.getImagePageById = async (req, res, next) =>{
 
 exports.addImagePage = async (req, res, next) => {
     try {
-        const {image_url} = req.body;
-        const result = await imgPageModel.addImagesPage(image_url);
+        const {type, image_url} = req.body;
+        const result = await imgPageModel.addImagesPage(type, image_url);
 
         if(result === null){
             return res.status(400).json({
@@ -56,8 +61,8 @@ exports.addImagePage = async (req, res, next) => {
 
 exports.updateImagePage = async(req, res, next) =>{
     try {
-        const {id, img_url} = req.body;
-        const result = imgPageModel.updateImagesPage(id, img_url);
+        const {id, image_url} = req.body;
+        const result = await imgPageModel.updateImagesPage(id, image_url);
 
         return res.status(200).json({
             message: "Cập nhật ảnh thành công !",
@@ -81,5 +86,3 @@ exports.deleteImagePage = async(req, res, next) =>{
         next(error);
     }
 }
-
-console.log(imgPageModel);

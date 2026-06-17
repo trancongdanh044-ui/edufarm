@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 const authRoute = require("./routes/auth.route");
 const postRoute = require("./routes/common/post.route");
 const imgPageRoute = require("./routes/admin/images_page.route");
+const actRoute = require('./routes/admin/activities.route');
 
 //Middleware
 app.use(cors());
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 //Commom
 app.use('/api/auth', authRoute);
 app.use('/api/post', postRoute);
+app.use('/api/activities', actRoute);
 
 //Admin
 app.use('/api/imagespage', imgPageRoute);
