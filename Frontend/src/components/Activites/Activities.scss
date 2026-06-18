@@ -5,7 +5,6 @@
         #f8fbf5,
         #eef8eb
     );
-
     &__name {
         text-align: center;
         font-size: 32px;
@@ -13,7 +12,7 @@
         color: #2e7d32;
         margin-bottom: 50px;
         position: relative;
-
+        
         &::after {
             content: "";
             width: 80px;
@@ -24,7 +23,6 @@
             margin: 15px auto 0;
         }
     }
-
     &__box {
         width: 1400px;
         max-width: calc(100% - 30px);

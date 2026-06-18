@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import {fetchAPI} from "../../api/post";
+import { fetchAPI } from "../../api/post";
 import "./Activities.scss";
 
 function Activities() {

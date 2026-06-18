@@ -1,6 +1,7 @@
 import Activities from "../../components/Activites";
 import Carousel from "../../components/Carousel";
 import Header from "../../components/Header/index";
+import Introduction from "../../components/Introduction";
 import News from "../../components/News";
 
 function Home() {
@@ -8,6 +9,7 @@ function Home() {
 		<>
 			<Header></Header>
 			<Carousel></Carousel>
+			<Introduction></Introduction>
 			<Activities></Activities>
 			<News></News>
 		</>
