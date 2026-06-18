@@ -11,6 +11,8 @@ router.get('/customers', postController.getAllCustomerPost);
 
 router.get('/customers/:customer_id', postController.getAllCustomerPostById);
 
+router.get('/:post_id', postController.getPostById);
+
 router.post('/', postController.createPost);
 
 router.patch('/', postController.updatePosts);

@@ -1,5 +1,6 @@
 const db = require("../configs/database.config");
 
+//Lấy tất cả bài viết của tất cả admin
 exports.getAllPostsOfAdmin = async (limit, offset) =>{
     const [rows] = await db.query(`
         select p.id, p.title, p.thumbnail,
@@ -25,6 +26,7 @@ exports.getAllPostsOfAdmin = async (limit, offset) =>{
     return rows;
 }
 
+//Lấy tất cả bài viết của Admin theo admin_id
 exports.getAllPostsOfAdminById = async(admin_id, limit, offset) =>{
     const [rows] = await db.query(
         `select p.id, p.title, p.thumbnail,
@@ -41,7 +43,7 @@ exports.getAllPostsOfAdminById = async(admin_id, limit, offset) =>{
          p.summary, p.content,
          p.view_count, p.created_at,
          p.updated_at, u.full_name,
-         u.avatar,
+         u.avatar
         order by p.created_at desc
         limit ?
         offset ?
@@ -51,6 +53,7 @@ exports.getAllPostsOfAdminById = async(admin_id, limit, offset) =>{
     return rows;
 }
 
+//Lấy tất cả bài viết của customer theo customer_id 
 exports.getAllPostsOfCustomerById = async(customer_id, limit, offset) =>{
     const [rows] = await db.query(
         `select p.id, p.title, p.thumbnail,
@@ -77,6 +80,7 @@ exports.getAllPostsOfCustomerById = async(customer_id, limit, offset) =>{
     return rows;
 }
 
+//Lất tất cả bài viết của customer
 exports.getAllPostsOfCustomer = async (limit, offset) =>{
     const [rows] = await db.query(`
         select p.id, p.title, p.thumbnail,
@@ -101,6 +105,16 @@ exports.getAllPostsOfCustomer = async (limit, offset) =>{
         `, [limit, offset]
     );
     return rows;
+}
+
+//Lấy bài viết theo post_id
+exports.getPostById = async (post_id) =>{
+    const [rows] = await db.query(
+        `select * from posts where id = ?`,
+        [post_id]
+    );
+
+    return rows[0];
 }
 
 exports.createPost = async (title, thumbnail, summary, content, image_urls = [], user_id) =>{

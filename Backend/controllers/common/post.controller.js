@@ -27,7 +27,8 @@ exports.getAllAdminPosts = async(req, res, next) =>{
 
 exports.getAllAdminPostsById = async(req, res, next) =>{
     try {
-        const {admin_id, limit, offset} = req.query;
+        const {admin_id} = req.params;
+        const {limit, offset} = req.query;
         const adIdPostList = await postModel.getAllPostsOfAdminById(Number(admin_id), Number(limit), Number(offset));
 
         if(adIdPostList.length === 0){
@@ -36,7 +37,7 @@ exports.getAllAdminPostsById = async(req, res, next) =>{
             })
         }else{
             adIdPostList.forEach(post =>{
-                convertToArray(post.img_urls)
+                post.img_urls = convertToArray(post.img_urls)
             });
             return res.status(200).json(adIdPostList);
         }
@@ -57,7 +58,7 @@ exports.getAllCustomerPost = async (req, res, next) =>{
         }
         else{
             cusPostList.forEach(post =>{
-                convertToArray(post.img_urls)
+                post.img_urls = convertToArray(post.img_urls)
             })
             res.status(200).json(cusPostList);
         }
@@ -68,7 +69,8 @@ exports.getAllCustomerPost = async (req, res, next) =>{
 
 exports.getAllCustomerPostById = async (req, res, next) =>{
     try {
-        const {customer_id, limit, offset} = req.query;
+        const {customer_id} = req.params;
+        const {limit, offset} = req.query;
         const cusIdPostList = await postModel.getAllPostsOfCustomerById(Number(customer_id), Number(limit), Number(offset));
 
         if(cusIdPostList.length === 0){
@@ -78,12 +80,29 @@ exports.getAllCustomerPostById = async (req, res, next) =>{
         }
         else{
             cusIdPostList.forEach(post =>{
-                convertToArray(post.img_urls);
+                post.img_urls = convertToArray(post.img_urls);
             })
             res.status(200).json(cusIdPostList);
         }
     } catch (error) {
         next(error)
+    }
+}
+
+exports.getPostById = async (req, res, next) =>{
+    try {
+        const post_id = req.params.post_id ? Number(req.params.post_id) : 1;
+        const postResult = await postModel.getPostById(post_id);
+
+        if(postResult === null || postResult === undefined || postResult === ""){
+            return res.status(404).json({
+                message: "Không tìm thấy bài viết !",
+            });
+        }
+
+        return res.status(200).json(postResult);
+    } catch (error) {
+        
     }
 }
 
