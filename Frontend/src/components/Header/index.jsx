@@ -42,13 +42,6 @@ function Header() {
 							to="/"
 							className={({ isActive }) =>
 								isActive ? "active" : ""
-							}>Đánh giá về chúng tôi</NavLink>
-					</li>
-					<li className="header__inner-wrap">
-						<NavLink
-							to="/"
-							className={({ isActive }) =>
-								isActive ? "active" : ""
 							}>Đặt lịch</NavLink>
 					</li>
 					<li className="header__inner-wrap">
