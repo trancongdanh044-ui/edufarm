@@ -3,7 +3,7 @@ import "./News.scss";
 import { fetchAPI } from "../../api/post";
 import { useEffect, useState } from "react";
 
-function News() {
+function NewsCompoment() {
 
 	const [postList, setPostList] = useState([]);
 
@@ -45,7 +45,7 @@ function News() {
 							</p>
 							<Link
 								className="news-card__link"
-								to={`${post.id}`}
+								to={`/news/${post.id}`}
 							>
 								Xem thêm
 							</Link>
@@ -55,7 +55,7 @@ function News() {
 			</div>
 			<Link
 				className="news__more"
-				to="/"
+				to="/news"
 			>
 				Xem thêm
 			</Link>
@@ -63,4 +63,4 @@ function News() {
 	);
 }
 
-export default News;
+export default NewsCompoment;

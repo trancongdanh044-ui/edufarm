@@ -102,7 +102,7 @@ exports.getPostById = async (req, res, next) =>{
 
         return res.status(200).json(postResult);
     } catch (error) {
-        
+        next(error)
     }
 }
 

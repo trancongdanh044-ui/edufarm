@@ -1,0 +1,314 @@
+.hnews {
+    max-width: 1300px;
+    margin: 80px auto;
+    padding: 0 20px;
+
+    &__name {
+        font-size: 40px;
+        font-weight: 700;
+        text-align: center;
+        color: #2e7d32;
+        margin-bottom: 50px;
+        position: relative;
+
+        &::after {
+            content: "";
+            width: 120px;
+            height: 4px;
+            background: #66bb6a;
+            border-radius: 999px;
+            display: block;
+            margin: 12px auto 0;
+        }
+    }
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 35px;
+        align-items: start;
+    }
+}
+
+/* ===== BÀI VIẾT NỔI BẬT ===== */
+
+.hpost {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+    transition: .35s;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+    }
+
+    &__image {
+        overflow: hidden;
+
+        &--thumbnail {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: .5s;
+        }
+    }
+
+    &:hover &__image--thumbnail {
+        transform: scale(1.05);
+    }
+
+    &__name {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1b5e20;
+        line-height: 1.4;
+        margin: 25px 25px 15px;
+    }
+
+    &__summary {
+        margin: 0 25px 15px;
+        color: #666;
+        font-size: 17px;
+        line-height: 1.7;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &__created {
+        color: #888;
+        margin: 0 25px 15px;
+        font-size: 14px;
+    }
+
+    &__content {
+        margin: 0 25px 25px;
+        color: #555;
+        line-height: 1.8;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+/* ===== SEARCH ===== */
+
+.bar {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+
+    margin-bottom: 25px;
+
+    &__name {
+        font-size: 20px;
+        color: #2e7d32;
+        margin-bottom: 15px;
+    }
+
+    &__search {
+        display: flex;
+        gap: 10px;
+
+        &--in {
+            flex: 1;
+            height: 48px;
+
+            border: 2px solid #e0e0e0;
+            border-radius: 999px;
+
+            padding: 0 20px;
+
+            transition: .3s;
+
+            &:focus {
+                outline: none;
+                border-color: #4caf50;
+                box-shadow: 0 0 12px rgba(76, 175, 80, .2);
+            }
+        }
+
+        &--btn {
+            width: 50px;
+            height: 50px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #2e7d32;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+            transition: .3s;
+
+            svg {
+                font-size: 22px;
+            }
+
+            &:hover {
+                background: #1b5e20;
+            }
+        }
+    }
+}
+
+/* ===== DANH SÁCH BÀI NHỎ ===== */
+
+.otherpost {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.otherpost__detail {
+    display: flex;
+    gap: 15px;
+
+    text-decoration: none;
+    color: inherit;
+
+    background: white;
+    border-radius: 16px;
+
+    padding: 12px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .06);
+
+    transition: .3s;
+
+    &:hover {
+        transform: translateX(5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    }
+
+    &--image {
+        flex-shrink: 0;
+
+        img {
+            width: 110px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    }
+
+    &--title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1b5e20;
+
+        margin-bottom: 8px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &--created {
+        color: #888;
+        font-size: 13px;
+    }
+}
+
+/* ===== NÚT XEM THÊM ===== */
+
+.more {
+    width: 100%;
+    margin-top: 25px;
+
+    height: 52px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #43a047,
+        #66bb6a
+    );
+
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(67, 160, 71, .35);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 992px) {
+    .hnews {
+        &__wrap {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .hpost {
+        &__image {
+            &--thumbnail {
+                height: 350px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .hnews {
+        &__name {
+            font-size: 32px;
+        }
+    }
+
+    .hpost {
+        &__name {
+            font-size: 24px;
+        }
+    }
+
+    .otherpost__detail {
+        flex-direction: column;
+
+        &--image {
+            img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    }
+
+    .bar {
+        &__search {
+            flex-direction: column;
+
+            &--btn {
+                width: 100%;
+                border-radius: 999px;
+            }
+        }
+    }
+}

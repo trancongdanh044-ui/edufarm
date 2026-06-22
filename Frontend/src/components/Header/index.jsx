@@ -6,8 +6,8 @@ import { fetchAPI } from "../../api/post";
 
 function Header() {
 	const [logo, setLogo] = useState({});
-	useEffect(() =>{
-		const loadData = async () =>{
+	useEffect(() => {
+		const loadData = async () => {
 			const data = await fetchAPI("/imagespage/admin/1");
 			setLogo(data);
 		}
@@ -25,28 +25,28 @@ function Header() {
 				<ul className="header__inner">
 					<li className="header__inner--item">
 						<NavLink
-							to="/"
+							to="/" end
 							className={({ isActive }) =>
 								isActive ? "active" : ""
 							}>Trang chủ</NavLink>
 					</li>
 					<li className="header__inner--item">
 						<NavLink
-							to="/"
+							to="/news"
 							className={({ isActive }) =>
 								isActive ? "active" : ""
 							}>Tin tức</NavLink>
 					</li>
 					<li className="header__inner-wrap">
 						<NavLink
-							to="/"
+							to="/booking"
 							className={({ isActive }) =>
 								isActive ? "active" : ""
 							}>Đặt lịch</NavLink>
 					</li>
 					<li className="header__inner-wrap">
 						<NavLink
-							to="/"
+							to="/profile-client"
 							className={({ isActive }) =>
 								isActive ? "active" : ""
 							}>Tài khoản của bạn</NavLink>

@@ -23,7 +23,7 @@ function Contacts() {
 						</a>
 					</li>
 					<li className="contact__list--item">
-						<a href="">
+						<a href="#">
 							<FaPhoneAlt></FaPhoneAlt>
 						</a>
 					</li>
